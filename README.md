@@ -12,7 +12,7 @@ Note: Do not run the same parser instance in parallel, as the parser relies on h
 
 ```
 docker build -t joty-2013-rstparser .
-docker run -v /Path/to/text/files:/samples -i -t joty-2013-rstparser
+docker run --rm -it -v $(pwd)/samples:/samples joty-2013-rstparser
 cd Discourse_Parser_Dist/
 ./parse.sh /samples/example.txt
 cat /samples/example.txt.rst
