@@ -1,19 +1,19 @@
 FROM java:7
-
-MAINTAINER Andreas Peldszus "peldszus@uni-potsdam.de"
+ARG DEBIAN_FRONTEND=noninteractive
 
 # Installs python
 RUN apt-get update \
-	&& apt-get install -y --force-yes python python-dev python-pip python-virtualenv
+	&& apt-get install -y --force-yes python2.7 python-dev python-pip python-virtualenv
 
 # Installs python packages
 RUN apt-get update \
 	&& apt-get install -y libblas-dev liblapack-dev libatlas-base-dev gfortran \
 	&& pip install --upgrade pip \
-	&& pip install numpy scipy sklearn nltk
+	&& pip install numpy==1.16.4 scipy==0.13 scikit-learn==0.17.1 nltk==3.2.5
 
 # Download and install discourse parser distribution
-RUN wget http://alt.qcri.org/tools/discourse-parser/releases/current/Discourse_Parser_Dist.tar.gz \
+RUN apt-get install -y wget \
+    && wget http://alt.qcri.org/tools/discourse-parser/releases/current/Discourse_Parser_Dist.tar.gz \
 	&& tar -xf Discourse_Parser_Dist.tar.gz \
     && rm -rf Discourse_Parser_Dist.tar.gz
 
