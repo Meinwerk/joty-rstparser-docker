@@ -16,7 +16,7 @@ docker run -it --volume $(pwd)/samples:/samples --workdir /Discourse_Parser_Dist
 for i in /samples/*.txt; do ./parse.sh $i; done
 cat /samples/example.txt.rst
 ```
-<!--docker run -it --volume $(pwd)/samples:/samples --workdir /Discourse_Parser_Dist --user $(id -u):$(id -g) parser-->
+<!--docker run -it --rm --volume $(pwd)/samples:/samples --workdir /Discourse_Parser_Dist --user $(id -u):$(id -g) parser-->
 
 About the RST Parser
 --------------------
