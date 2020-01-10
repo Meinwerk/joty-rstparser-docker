@@ -13,7 +13,7 @@ Note: Do not run the same parser instance in parallel, as the parser relies on h
 ```
 docker build -t parser .
 docker run -it --rm --volume $(pwd)/samples:/samples --workdir /Discourse_Parser_Dist parser
-for i in /samples/*.txt; do ./parse.sh $i; done
+for i in /samples/*.filtered; do ./parse.sh $i; done
 cat /samples/example.txt.rst
 ```
 <!--docker run -it --volume $(pwd)/samples:/samples --workdir /Discourse_Parser_Dist --user $(id -u):$(id -g) parser-->
